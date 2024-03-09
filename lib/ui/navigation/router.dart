@@ -43,33 +43,26 @@ class MyRouter extends ChangeNotifier {
 
   GoRoute get _accountSelectRoute => GoRoute(
         path: _accountPath,
+        pageBuilder: _buildAccountPage,
         routes: [
           GoRoute(
-            path: _accountPath,
-            pageBuilder: _buildAccountPage,
+            path: _cabinetPath,
+            pageBuilder: _buildCabinetPage,
             routes: [
               GoRoute(
-                path: _cabinetPath,
-                pageBuilder: _buildCabinetPage,
-                routes: [
-                  GoRoute(
-                    path: _settingsPath,
-                    pageBuilder: _buildSettingsPage,
-                  ),
-                  GoRoute(
-                    path: _expertPath,
-                    pageBuilder: _buildExpertPage,
-                  ),
-                ],
+                path: _settingsPath,
+                pageBuilder: _buildSettingsPage,
+              ),
+              GoRoute(
+                path: _expertPath,
+                pageBuilder: _buildExpertPage,
               ),
             ],
-          )
+          ),
         ],
       );
 
-  void pop() {
-    goRouter.pop();
-  }
+  void pop() => goRouter.pop();
 
   void openAuthPage() => _router?.go(_authPath);
 
