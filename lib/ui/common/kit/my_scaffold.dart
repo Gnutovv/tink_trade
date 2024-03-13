@@ -10,7 +10,7 @@ class MyScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration:  const BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: RadialGradient(
             center: Alignment(1.2, 0),
             focal: Alignment(0.8, -0.8),

@@ -6,7 +6,7 @@ import 'package:tink_trade/ui/features/authorization/screens/authorization_scree
 import 'package:tink_trade/ui/features/cabinet/screens/cabinet_screen.dart';
 import 'package:tink_trade/ui/features/expert/screens/expert_screen.dart';
 import 'package:tink_trade/ui/features/settings/screens/settings_screen.dart';
-import 'package:tink_trade/ui/features/splash_screen.dart';
+import 'package:tink_trade/ui/features/session/splash_screen.dart';
 
 const _splashPath = '/';
 const _authPath = '/auth';
