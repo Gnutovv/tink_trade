@@ -96,7 +96,7 @@ class MyRouter extends ChangeNotifier {
   static Page<void> _buildAuthPage(BuildContext context, GoRouterState state) {
     return _page(
       key: state.pageKey,
-      child: const AuthorizationScreen(),
+      child: AuthorizationScreen(),
       restorationId: state.pageKey.value,
     );
   }

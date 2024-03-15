@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tink_trade/ui/theme/my_colors.dart';
+import 'package:tink_trade/ui/common/theme/my_colors.dart';
 
 class MyScaffold extends StatelessWidget {
-  final Widget body;
+  final Widget child;
 
-  const MyScaffold({required this.body, super.key});
+  const MyScaffold({required this.child, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyScaffold extends StatelessWidget {
             ],
           ),
         ),
-        child: body,
+        child: child,
       ),
     );
   }

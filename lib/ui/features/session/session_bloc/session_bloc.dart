@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tink_trade/domain/entities/user/authenticated_user.dart';
 import 'package:tink_trade/domain/token_manager/token_manager.dart';
@@ -27,7 +28,6 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
   }
 
   Future<void> _check(SessionEvent event, Emitter<SessionState> emitter) async {
-    await Future.delayed(Duration(seconds: 4));
     emitter(const SessionState.notAuthenticated());
   }
 }
