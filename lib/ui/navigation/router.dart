@@ -15,7 +15,7 @@ const _cabinetPath = 'cabinet';
 const _expertPath = 'expert';
 const _settingsPath = 'settings';
 
-class MyRouter extends ChangeNotifier {
+base class MyRouter extends ChangeNotifier {
   GoRouter get goRouter {
     _router ??= _createRouter;
     return _router!;
@@ -96,7 +96,7 @@ class MyRouter extends ChangeNotifier {
   static Page<void> _buildAuthPage(BuildContext context, GoRouterState state) {
     return _page(
       key: state.pageKey,
-      child: const AuthorizationScreen(),
+      child: AuthorizationScreen(),
       restorationId: state.pageKey.value,
     );
   }

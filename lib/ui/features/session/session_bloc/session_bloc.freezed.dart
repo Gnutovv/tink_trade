@@ -108,15 +108,23 @@ class __$$LogInSessionEventImplCopyWithImpl<$Res> extends _$SessionEventCopyWith
 
 /// @nodoc
 
-class _$LogInSessionEventImpl extends _LogInSessionEvent {
+class _$LogInSessionEventImpl extends _LogInSessionEvent with DiagnosticableTreeMixin {
   const _$LogInSessionEventImpl({required this.token}) : super._();
 
   @override
   final String token;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SessionEvent.logIn(token: $token)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SessionEvent.logIn'))
+      ..add(DiagnosticsProperty('token', token));
   }
 
   @override
@@ -244,15 +252,23 @@ class __$$CheckSessionEventImplCopyWithImpl<$Res> extends _$SessionEventCopyWith
 
 /// @nodoc
 
-class _$CheckSessionEventImpl extends _CheckSessionEvent {
+class _$CheckSessionEventImpl extends _CheckSessionEvent with DiagnosticableTreeMixin {
   const _$CheckSessionEventImpl({required this.token}) : super._();
 
   @override
   final String token;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SessionEvent.check(token: $token)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SessionEvent.check'))
+      ..add(DiagnosticsProperty('token', token));
   }
 
   @override
@@ -366,12 +382,18 @@ class __$$LogOutSessionEventImplCopyWithImpl<$Res> extends _$SessionEventCopyWit
 
 /// @nodoc
 
-class _$LogOutSessionEventImpl extends _LogOutSessionEvent {
+class _$LogOutSessionEventImpl extends _LogOutSessionEvent with DiagnosticableTreeMixin {
   const _$LogOutSessionEventImpl() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SessionEvent.logOut()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'SessionEvent.logOut'));
   }
 
   @override
@@ -460,23 +482,23 @@ abstract class _LogOutSessionEvent extends SessionEvent {
 mixin _$SessionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticatedUser user) authenticated,
+    required TResult Function(User user) authenticated,
     required TResult Function(String? message) notAuthenticated,
-    required TResult Function(AuthenticatedUser? user) inProgress,
+    required TResult Function(User? user) inProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticatedUser user)? authenticated,
+    TResult? Function(User user)? authenticated,
     TResult? Function(String? message)? notAuthenticated,
-    TResult? Function(AuthenticatedUser? user)? inProgress,
+    TResult? Function(User? user)? inProgress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticatedUser user)? authenticated,
+    TResult Function(User user)? authenticated,
     TResult Function(String? message)? notAuthenticated,
-    TResult Function(AuthenticatedUser? user)? inProgress,
+    TResult Function(User? user)? inProgress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -526,7 +548,7 @@ abstract class _$$AuthenticatedSessionStateImplCopyWith<$Res> {
           _$AuthenticatedSessionStateImpl value, $Res Function(_$AuthenticatedSessionStateImpl) then) =
       __$$AuthenticatedSessionStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AuthenticatedUser user});
+  $Res call({User user});
 }
 
 /// @nodoc
@@ -540,28 +562,36 @@ class __$$AuthenticatedSessionStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = freezed,
+    Object? user = null,
   }) {
     return _then(_$AuthenticatedSessionStateImpl(
-      user: freezed == user
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as AuthenticatedUser,
+              as User,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AuthenticatedSessionStateImpl implements _AuthenticatedSessionState {
-  const _$AuthenticatedSessionStateImpl({required this.user});
+class _$AuthenticatedSessionStateImpl extends _AuthenticatedSessionState with DiagnosticableTreeMixin {
+  const _$AuthenticatedSessionStateImpl({required this.user}) : super._();
 
   @override
-  final AuthenticatedUser user;
+  final User user;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SessionState.authenticated(user: $user)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SessionState.authenticated'))
+      ..add(DiagnosticsProperty('user', user));
   }
 
   @override
@@ -569,11 +599,11 @@ class _$AuthenticatedSessionStateImpl implements _AuthenticatedSessionState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthenticatedSessionStateImpl &&
-            const DeepCollectionEquality().equals(other.user, user));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
+  int get hashCode => Object.hash(runtimeType, user);
 
   @JsonKey(ignore: true)
   @override
@@ -584,9 +614,9 @@ class _$AuthenticatedSessionStateImpl implements _AuthenticatedSessionState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticatedUser user) authenticated,
+    required TResult Function(User user) authenticated,
     required TResult Function(String? message) notAuthenticated,
-    required TResult Function(AuthenticatedUser? user) inProgress,
+    required TResult Function(User? user) inProgress,
   }) {
     return authenticated(user);
   }
@@ -594,9 +624,9 @@ class _$AuthenticatedSessionStateImpl implements _AuthenticatedSessionState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticatedUser user)? authenticated,
+    TResult? Function(User user)? authenticated,
     TResult? Function(String? message)? notAuthenticated,
-    TResult? Function(AuthenticatedUser? user)? inProgress,
+    TResult? Function(User? user)? inProgress,
   }) {
     return authenticated?.call(user);
   }
@@ -604,9 +634,9 @@ class _$AuthenticatedSessionStateImpl implements _AuthenticatedSessionState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticatedUser user)? authenticated,
+    TResult Function(User user)? authenticated,
     TResult Function(String? message)? notAuthenticated,
-    TResult Function(AuthenticatedUser? user)? inProgress,
+    TResult Function(User? user)? inProgress,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -650,10 +680,11 @@ class _$AuthenticatedSessionStateImpl implements _AuthenticatedSessionState {
   }
 }
 
-abstract class _AuthenticatedSessionState implements SessionState {
-  const factory _AuthenticatedSessionState({required final AuthenticatedUser user}) = _$AuthenticatedSessionStateImpl;
+abstract class _AuthenticatedSessionState extends SessionState {
+  const factory _AuthenticatedSessionState({required final User user}) = _$AuthenticatedSessionStateImpl;
+  const _AuthenticatedSessionState._() : super._();
 
-  AuthenticatedUser get user;
+  User get user;
   @JsonKey(ignore: true)
   _$$AuthenticatedSessionStateImplCopyWith<_$AuthenticatedSessionStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -692,15 +723,23 @@ class __$$NotAuthenticatedSessionStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$NotAuthenticatedSessionStateImpl implements _NotAuthenticatedSessionState {
-  const _$NotAuthenticatedSessionStateImpl({this.message});
+class _$NotAuthenticatedSessionStateImpl extends _NotAuthenticatedSessionState with DiagnosticableTreeMixin {
+  const _$NotAuthenticatedSessionStateImpl({this.message}) : super._();
 
   @override
   final String? message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SessionState.notAuthenticated(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SessionState.notAuthenticated'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -723,9 +762,9 @@ class _$NotAuthenticatedSessionStateImpl implements _NotAuthenticatedSessionStat
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticatedUser user) authenticated,
+    required TResult Function(User user) authenticated,
     required TResult Function(String? message) notAuthenticated,
-    required TResult Function(AuthenticatedUser? user) inProgress,
+    required TResult Function(User? user) inProgress,
   }) {
     return notAuthenticated(message);
   }
@@ -733,9 +772,9 @@ class _$NotAuthenticatedSessionStateImpl implements _NotAuthenticatedSessionStat
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticatedUser user)? authenticated,
+    TResult? Function(User user)? authenticated,
     TResult? Function(String? message)? notAuthenticated,
-    TResult? Function(AuthenticatedUser? user)? inProgress,
+    TResult? Function(User? user)? inProgress,
   }) {
     return notAuthenticated?.call(message);
   }
@@ -743,9 +782,9 @@ class _$NotAuthenticatedSessionStateImpl implements _NotAuthenticatedSessionStat
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticatedUser user)? authenticated,
+    TResult Function(User user)? authenticated,
     TResult Function(String? message)? notAuthenticated,
-    TResult Function(AuthenticatedUser? user)? inProgress,
+    TResult Function(User? user)? inProgress,
     required TResult orElse(),
   }) {
     if (notAuthenticated != null) {
@@ -789,8 +828,9 @@ class _$NotAuthenticatedSessionStateImpl implements _NotAuthenticatedSessionStat
   }
 }
 
-abstract class _NotAuthenticatedSessionState implements SessionState {
+abstract class _NotAuthenticatedSessionState extends SessionState {
   const factory _NotAuthenticatedSessionState({final String? message}) = _$NotAuthenticatedSessionStateImpl;
+  const _NotAuthenticatedSessionState._() : super._();
 
   String? get message;
   @JsonKey(ignore: true)
@@ -804,7 +844,7 @@ abstract class _$$InProgressSessionStateImplCopyWith<$Res> {
           _$InProgressSessionStateImpl value, $Res Function(_$InProgressSessionStateImpl) then) =
       __$$InProgressSessionStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AuthenticatedUser? user});
+  $Res call({User? user});
 }
 
 /// @nodoc
@@ -824,22 +864,30 @@ class __$$InProgressSessionStateImplCopyWithImpl<$Res>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as AuthenticatedUser?,
+              as User?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$InProgressSessionStateImpl implements _InProgressSessionState {
-  const _$InProgressSessionStateImpl({required this.user});
+class _$InProgressSessionStateImpl extends _InProgressSessionState with DiagnosticableTreeMixin {
+  const _$InProgressSessionStateImpl({required this.user}) : super._();
 
   @override
-  final AuthenticatedUser? user;
+  final User? user;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SessionState.inProgress(user: $user)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SessionState.inProgress'))
+      ..add(DiagnosticsProperty('user', user));
   }
 
   @override
@@ -847,11 +895,11 @@ class _$InProgressSessionStateImpl implements _InProgressSessionState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InProgressSessionStateImpl &&
-            const DeepCollectionEquality().equals(other.user, user));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
+  int get hashCode => Object.hash(runtimeType, user);
 
   @JsonKey(ignore: true)
   @override
@@ -862,9 +910,9 @@ class _$InProgressSessionStateImpl implements _InProgressSessionState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticatedUser user) authenticated,
+    required TResult Function(User user) authenticated,
     required TResult Function(String? message) notAuthenticated,
-    required TResult Function(AuthenticatedUser? user) inProgress,
+    required TResult Function(User? user) inProgress,
   }) {
     return inProgress(user);
   }
@@ -872,9 +920,9 @@ class _$InProgressSessionStateImpl implements _InProgressSessionState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticatedUser user)? authenticated,
+    TResult? Function(User user)? authenticated,
     TResult? Function(String? message)? notAuthenticated,
-    TResult? Function(AuthenticatedUser? user)? inProgress,
+    TResult? Function(User? user)? inProgress,
   }) {
     return inProgress?.call(user);
   }
@@ -882,9 +930,9 @@ class _$InProgressSessionStateImpl implements _InProgressSessionState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticatedUser user)? authenticated,
+    TResult Function(User user)? authenticated,
     TResult Function(String? message)? notAuthenticated,
-    TResult Function(AuthenticatedUser? user)? inProgress,
+    TResult Function(User? user)? inProgress,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -928,10 +976,11 @@ class _$InProgressSessionStateImpl implements _InProgressSessionState {
   }
 }
 
-abstract class _InProgressSessionState implements SessionState {
-  const factory _InProgressSessionState({required final AuthenticatedUser? user}) = _$InProgressSessionStateImpl;
+abstract class _InProgressSessionState extends SessionState {
+  const factory _InProgressSessionState({required final User? user}) = _$InProgressSessionStateImpl;
+  const _InProgressSessionState._() : super._();
 
-  AuthenticatedUser? get user;
+  User? get user;
   @JsonKey(ignore: true)
   _$$InProgressSessionStateImplCopyWith<_$InProgressSessionStateImpl> get copyWith =>
       throw _privateConstructorUsedError;

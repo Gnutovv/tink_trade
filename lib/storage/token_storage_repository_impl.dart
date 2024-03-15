@@ -14,8 +14,7 @@ class TokenStorageRepositoryImpl extends TokenStorageRepository {
   Future<void> init() async => _token = await _storage.read(key: _tokenKey);
 
   @override
-  Future<void> save(String token) async =>
-      await _storage.write(key: _tokenKey, value: token);
+  Future<void> save(String token) async => await _storage.write(key: _tokenKey, value: token);
 
   @override
   String get token => _token ?? '';

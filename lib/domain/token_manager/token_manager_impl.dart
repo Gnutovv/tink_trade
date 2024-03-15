@@ -1,7 +1,7 @@
 import 'package:tink_trade/domain/token_manager/token_manager.dart';
 import 'package:tink_trade/storage/token_storage_repository.dart';
 
-class TokenManagerImpl extends ITokenManager {
+base class TokenManagerImpl implements ITokenManager {
   final TokenStorageRepository _repository;
 
   TokenManagerImpl(this._repository);
