@@ -27,6 +27,7 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
   }
 
   Future<void> _check(SessionEvent event, Emitter<SessionState> emitter) async {
-    emitter(SessionState.notAuthenticated());
+    await Future.delayed(Duration(seconds: 4));
+    emitter(const SessionState.notAuthenticated());
   }
 }
